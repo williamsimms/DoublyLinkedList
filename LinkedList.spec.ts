@@ -2335,5 +2335,7 @@ describe('Get Data', () => {
     expect(countTwentyTwo).toEqual(1)
 
     const data = list.getData()
+
+    expect(data).toEqual([22, 11, 11, 6, 6, 6, 3, 5, 5, 5, 5])
   })
 })
