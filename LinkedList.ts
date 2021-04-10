@@ -745,6 +745,48 @@ export class LinkedList<T> {
     return counter
   }
 
+  unique(): number {
+    if (!this.head && !this.tail) {
+      return 0
+    }
+
+    let current = this.head
+    let index = 0
+    let counter = 0
+
+    while (current) {
+      while (this.count(current.data) > 1) {
+        this.removeAt(index)
+        counter++
+      }
+
+      current = current.next
+      index++
+    }
+
+    return counter
+  }
+
+  removeDuplicates(): number {
+    return this.unique()
+  }
+
+  getData(): T[] | void {
+    if (!this.head && !this.tail) {
+      return
+    }
+
+    let current = this.head
+    const data = []
+
+    while (current) {
+      data.push(current.data)
+      current = current.next
+    }
+
+    return data
+  }
+
   *[Symbol.iterator](): Generator<Node<T>> {
     let current = this.head
 

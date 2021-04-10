@@ -2197,3 +2197,143 @@ describe('Count', () => {
     expect(countTwentyTwo).toEqual(2)
   })
 })
+
+describe('Unique', () => {
+  test('returns zero if the list is empty', () => {
+    const list = new LinkedList<number>()
+
+    const count = list.unique()
+
+    expect(count).toEqual(0)
+  })
+
+  test('returns the number of elements removed and removes all nodes with duplicate data', () => {
+    const list = new LinkedList<number>()
+
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(3)
+    list.insertFirst(6)
+    list.insertFirst(6)
+    list.insertFirst(6)
+    list.insertFirst(11)
+    list.insertFirst(11)
+    list.insertFirst(22)
+
+    let countFive = list.count(5)
+    let countThree = list.count(3)
+    let countSix = list.count(6)
+    let countEleven = list.count(11)
+    let countTwentyTwo = list.count(22)
+
+    expect(countFive).toEqual(4)
+    expect(countThree).toEqual(1)
+    expect(countSix).toEqual(3)
+    expect(countEleven).toEqual(2)
+    expect(countTwentyTwo).toEqual(1)
+
+    const numRemoved = list.unique()
+
+    countFive = list.count(5)
+    countThree = list.count(3)
+    countSix = list.count(6)
+    countEleven = list.count(11)
+    countTwentyTwo = list.count(22)
+
+    expect(numRemoved).toEqual(6)
+
+    expect(countFive).toEqual(1)
+    expect(countThree).toEqual(1)
+    expect(countSix).toEqual(1)
+    expect(countEleven).toEqual(1)
+    expect(countTwentyTwo).toEqual(1)
+  })
+})
+
+describe('Remove Duplicates', () => {
+  test('acts as an alias for unique', () => {
+    const list = new LinkedList<number>()
+
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(3)
+    list.insertFirst(6)
+    list.insertFirst(6)
+    list.insertFirst(6)
+    list.insertFirst(11)
+    list.insertFirst(11)
+    list.insertFirst(22)
+
+    let countFive = list.count(5)
+    let countThree = list.count(3)
+    let countSix = list.count(6)
+    let countEleven = list.count(11)
+    let countTwentyTwo = list.count(22)
+
+    expect(countFive).toEqual(4)
+    expect(countThree).toEqual(1)
+    expect(countSix).toEqual(3)
+    expect(countEleven).toEqual(2)
+    expect(countTwentyTwo).toEqual(1)
+
+    const numRemoved = list.removeDuplicates()
+
+    countFive = list.count(5)
+    countThree = list.count(3)
+    countSix = list.count(6)
+    countEleven = list.count(11)
+    countTwentyTwo = list.count(22)
+
+    expect(numRemoved).toEqual(6)
+
+    expect(countFive).toEqual(1)
+    expect(countThree).toEqual(1)
+    expect(countSix).toEqual(1)
+    expect(countEleven).toEqual(1)
+    expect(countTwentyTwo).toEqual(1)
+  })
+})
+
+describe('Get Data', () => {
+  test('returns undefined if the list is empty', () => {
+    const list = new LinkedList<number>()
+
+    const count = list.getData()
+
+    expect(count).toBeUndefined()
+  })
+
+  test('returns an array with the node data of all the nodes', () => {
+    const list = new LinkedList<number>()
+
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(5)
+    list.insertFirst(3)
+    list.insertFirst(6)
+    list.insertFirst(6)
+    list.insertFirst(6)
+    list.insertFirst(11)
+    list.insertFirst(11)
+    list.insertFirst(22)
+
+    const countFive = list.count(5)
+    const countThree = list.count(3)
+    const countSix = list.count(6)
+    const countEleven = list.count(11)
+    const countTwentyTwo = list.count(22)
+
+    expect(countFive).toEqual(4)
+    expect(countThree).toEqual(1)
+    expect(countSix).toEqual(3)
+    expect(countEleven).toEqual(2)
+    expect(countTwentyTwo).toEqual(1)
+
+    const data = list.getData()
+  })
+})
