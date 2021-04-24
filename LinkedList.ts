@@ -599,6 +599,7 @@ export class LinkedList<T> {
 
     this.head = null
     this.tail = null
+    this.length = 0
   }
 
   empty(): boolean {
